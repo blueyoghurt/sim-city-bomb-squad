@@ -1,0 +1,48 @@
+html {
+    height: 100%
+}
+
+.unexploded {
+  background-image: url("img/simcity.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  font-family: monospace;
+}
+
+.timer-container {
+  display: block;
+  width: 20%;
+  margin: 0 auto;
+  font-family: monospace;
+}
+
+.timer {
+  width: 100%
+  padding-bottom: 1000%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.countdown-container {
+  color: red;
+  width: 70%;
+  text-align: center;
+  padding: 1em;
+  font-size: x-large;
+  margin: 2% auto;
+}
+
+.wire-containers {
+  width: 60%;
+  margin: 0% auto;
+  padding: 10%
+  display: block;
+}
+
+.reset {
+  width: 30%;
+  margin:10% auto 10% auto;
+  margin-bottom: 15%
+  padding: 10%
+  font-family: monospace;
+  text-align: center;
+}
