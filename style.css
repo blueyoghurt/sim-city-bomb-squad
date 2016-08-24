@@ -40,9 +40,8 @@ html {
 
 .reset {
   width: 30%;
-  margin:10% auto 10% auto;
-  margin-bottom: 15%
-  padding: 10%
+  margin:0% auto 5% auto;
+  padding: 10%;
   font-family: monospace;
   text-align: center;
 }
