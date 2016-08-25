@@ -27,18 +27,14 @@ for (i = 0; i< wires.length ; i++ ){
 function cut(){
   this.src =  "img/cut-"+this.id+"-wire.png";
   numOfWiresCut += 1;
-  checkdefused();
+  checkdefused(this.value);
   if (this.value == 0){
     setTimeout(triggered,750);
     }
 }
 
-// function showCutWires () {
-//   CurrentWire.src =  "img/cut-"+CurrentWire.id+"-wire.png";
-// }
-
-function checkdefused(){
-  if (numOfSafeWires == numOfWiresCut){
+function checkdefused(value){
+  if (numOfSafeWires == numOfWiresCut && value != 0){
     defused();
   }
 }
@@ -53,8 +49,10 @@ function startTimer(duration, display) {
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
+        DisplaySeconds = Math.floor(seconds/100) < 10 ? "0" + Math.floor(seconds/100) : Math.floor(seconds/100);
+        milliseconds = milliseconds < 10 ? "0" + milliseconds : milliseconds;
 
-        display.textContent = minutes + ":" + Math.floor(seconds/100) + ":" + milliseconds;
+        display.textContent = minutes + ":" + DisplaySeconds + ":" + milliseconds;
 
         if (--timer < 0) {
             triggered();
@@ -70,6 +68,7 @@ function clearTimer(){
 
 function resetB (){
   clearInterval(GlobalTimer);
+  document.getElementById('audioplayer').src = "sounds/Siren.wav";
   var display = document.getElementById('timer');
   startTimer(30*100, display);
   var wires = document.getElementsByClassName('wires');
@@ -97,16 +96,18 @@ function randomT (){
 function triggered () {
   clearInterval(GlobalTimer);
   document.getElementsByTagName('body')[0].className = "triggered";
-  var wires = document.getElementsByClassName('wires')
+  var wires = document.getElementsByClassName('wires');
+  document.getElementById('audioplayer').src = "sounds/BldgExplode.wav";
   for (i = 0; i< wires.length; i++){
     wires[i].removeEventListener('click', cut);
   }
 }
 
 function defused() {
-  console.log("Congragulations! It has been defused");
+  console.log("Congratulations! It has been defused");
+  document.getElementById('audioplayer').src = "sounds/CrowdYay.wav";
   clearInterval(GlobalTimer);
-  document.getElementById('timer').textContent += " Rejoice!";
+  document.getElementById('timer').textContent += "  Rejoice!";
   var wires = document.getElementsByClassName('wires')
   for (i = 0; i< wires.length; i++){
     wires[i].removeEventListener('click',cut);
