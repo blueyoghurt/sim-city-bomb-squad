@@ -17,7 +17,6 @@ startTimer(30*100, display);
 var fuseCombination = randomT();
 numOfSafeWires = fuseCombination.reduce(liveWires);
 
-console.log(fuseCombination);
 for (i = 0; i< wires.length ; i++ ){
   wires[i].value = fuseCombination[i];
   wires[i].addEventListener('click', cut)
@@ -69,6 +68,7 @@ function clearTimer(){
 function resetB (){
   clearInterval(GlobalTimer);
   document.getElementById('audioplayer').src = "sounds/Siren.wav";
+  document.getElementById('audioplayer').loop = true;
   var display = document.getElementById('timer');
   startTimer(30*100, display);
   var wires = document.getElementsByClassName('wires');
@@ -76,7 +76,6 @@ function resetB (){
   var fuseCombination = randomT();
   numOfSafeWires = fuseCombination.reduce(liveWires);
   numOfWiresCut = 0;
-  console.log(fuseCombination);
   for (i = 0; i < wires.length; i ++){
     wires[i].src = "img/uncut-"+ wires[i].id+"-wire.png";
     wires[i].value = fuseCombination[i];
@@ -98,14 +97,15 @@ function triggered () {
   document.getElementsByTagName('body')[0].className = "triggered";
   var wires = document.getElementsByClassName('wires');
   document.getElementById('audioplayer').src = "sounds/BldgExplode.wav";
+  document.getElementById('audioplayer').loop = false;
   for (i = 0; i< wires.length; i++){
     wires[i].removeEventListener('click', cut);
   }
 }
 
 function defused() {
-  console.log("Congratulations! It has been defused");
   document.getElementById('audioplayer').src = "sounds/CrowdYay.wav";
+  document.getElementById('audioplayer').loop = false;
   clearInterval(GlobalTimer);
   document.getElementById('timer').textContent += "  Rejoice!";
   var wires = document.getElementsByClassName('wires')
