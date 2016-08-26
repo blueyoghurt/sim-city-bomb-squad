@@ -1,3 +1,4 @@
+// Global Variables
 var numOfSafeWires;
 var numOfWiresCut = 0;
 var GlobalTimer;
@@ -5,21 +6,17 @@ var liveWires = function(a,b){
   return a + b;
 };
 
+// functions that need to wait for the page to complete loading
 document.addEventListener("DOMContentLoaded", function() {
-
-var wires = document.getElementsByClassName('wires');
-
-document.getElementById('reset').addEventListener('click', resetB);
-
-var display = document.getElementById('timer');
-startTimer(30*100, display);
-
-var fuseCombination = randomT();
-numOfSafeWires = fuseCombination.reduce(liveWires);
-
-for (i = 0; i< wires.length ; i++ ){
-  wires[i].value = fuseCombination[i];
-  wires[i].addEventListener('click', cut)
+  document.getElementById('reset').addEventListener('click', resetB);
+  var wires = document.getElementsByClassName('wires');
+  var display = document.getElementById('timer');
+  var fuseCombination = randomT();
+  startTimer(30*100, display);
+  numOfSafeWires = fuseCombination.reduce(liveWires);
+  for (i = 0; i< wires.length ; i++ ){
+    wires[i].value = fuseCombination[i];
+    wires[i].addEventListener('click', cut)
   }
 });
 
