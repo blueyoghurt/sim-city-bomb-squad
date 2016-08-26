@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var wires = document.getElementsByClassName('wires');
   var display = document.getElementById('timer');
   var fuseCombination = randomT();
-  startTimer(30*100, display);
+  startTimer(20*100, display);
   numOfSafeWires = fuseCombination.reduce(liveWires);
   for (i = 0; i< wires.length ; i++ ){
     wires[i].value = fuseCombination[i];
@@ -50,6 +50,8 @@ function startTimer(duration, display) {
 
     display.textContent = minutes + ":" + DisplaySeconds + ":" + milliseconds;
 
+    if (timer<11*100){ display.style.color = "red";}
+
     if (--timer < 0) {
       triggered();
       clearTimer(GlobalTimer);
@@ -65,7 +67,8 @@ function clearTimer(){
 function resetB (){
   clearInterval(GlobalTimer);
   var display = document.getElementById('timer');
-  startTimer(30*100, display);
+  startTimer(20*100, display);
+  display.style.color = "white";
   document.getElementById('audioplayer').src = "sounds/Siren.wav";
   document.getElementById('audioplayer').loop = true;
   var wires = document.getElementsByClassName('wires');
