@@ -64,15 +64,15 @@ function clearTimer(){
 
 function resetB (){
   clearInterval(GlobalTimer);
-  document.getElementById('audioplayer').src = "sounds/Siren.wav";
-  document.getElementById('audioplayer').loop = true;
   var display = document.getElementById('timer');
   startTimer(30*100, display);
-  var wires = document.getElementsByClassName('wires');
+  document.getElementById('audioplayer').src = "sounds/Siren.wav";
+  document.getElementById('audioplayer').loop = true;
   document.getElementsByTagName('body')[0].className = "unexploded";
   var fuseCombination = randomT();
   numOfSafeWires = fuseCombination.reduce(liveWires);
   numOfWiresCut = 0;
+  var wires = document.getElementsByClassName('wires');
   for (i = 0; i < wires.length; i ++){
     wires[i].src = "img/uncut-"+ wires[i].id+"-wire.png";
     wires[i].value = fuseCombination[i];
@@ -92,9 +92,9 @@ function randomT (){
 function triggered () {
   clearInterval(GlobalTimer);
   document.getElementsByTagName('body')[0].className = "triggered";
-  var wires = document.getElementsByClassName('wires');
   document.getElementById('audioplayer').src = "sounds/BldgExplode.wav";
   document.getElementById('audioplayer').loop = false;
+  var wires = document.getElementsByClassName('wires');
   for (i = 0; i< wires.length; i++){
     wires[i].removeEventListener('click', cut);
   }
