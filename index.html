@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Sim City Bomb Squad</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
-  </head>
-  <body class="unexploded">
-    <div class="timer-container">
-      <div class="timer">
-        <div class="countdown-container">
-            <p id ="timer">
-              Countdown Timer
-            </p>
-        </div>
-        <div class="wire-containers">
-          <img src="img/uncut-blue-wire.png" class="wires" id="blue"/>
-          <img src="img/uncut-green-wire.png" class="wires" id="green"/>
-          <img src="img/uncut-red-wire.png" class="wires" id="red"/>
-          <img src="img/uncut-white-wire.png" class="wires" id="white"/>
-          <img src="img/uncut-yellow-wire.png" class="wires" id="yellow"/>
-        </div>
-        <audio autoplay loop id="audioplayer">
-          <source src="sounds/Siren.wav" type="audio/wav">
+<head>
+  <meta charset="utf-8">
+  <title>Sim City Bomb Squad</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
+</head>
+<body class="unexploded">
+  <div class="timer-container">
+    <div class="timer">
+      <div class="countdown-container">
+        <p id ="timer">
+          Countdown Timer
+        </p>
+      </div>
+      <div class="wire-containers">
+        <img src="img/uncut-blue-wire.png" class="wires" id="blue"/>
+        <img src="img/uncut-green-wire.png" class="wires" id="green"/>
+        <img src="img/uncut-red-wire.png" class="wires" id="red"/>
+        <img src="img/uncut-white-wire.png" class="wires" id="white"/>
+        <img src="img/uncut-yellow-wire.png" class="wires" id="yellow"/>
+      </div>
+      <audio autoplay loop id="audioplayer">
+        <source src="sounds/Siren.wav" type="audio/wav">
         </audio>
-        <audio id="explosion">
-          <source src="sounds/BldgExplode.wav" type="audio/wav">
-        </audio>
-
         <div class="reset">
           <button type="button" name="reset" id="reset">RESET</button>
         </div>
       </div>
     </div>
   </body>
-</html>
+  </html>

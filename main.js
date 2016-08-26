@@ -26,7 +26,7 @@ function cut(){
   checkdefused(this.value);
   if (this.value == 0){
     setTimeout(triggered,750);
-    }
+  }
 }
 
 function checkdefused(value){
@@ -36,26 +36,26 @@ function checkdefused(value){
 }
 
 function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
+  var timer = duration, minutes, seconds;
 
-    var stopTimer = setInterval(function () {
-        minutes = parseInt(timer / 6000, 10);
-        seconds = parseInt(timer % 6000, 10);
-        milliseconds = parseInt(timer % 6000 ,10) %100;
+  var stopTimer = setInterval(function () {
+    minutes = parseInt(timer / 6000, 10);
+    seconds = parseInt(timer % 6000, 10);
+    milliseconds = parseInt(timer % 6000 ,10) %100;
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        DisplaySeconds = Math.floor(seconds/100) < 10 ? "0" + Math.floor(seconds/100) : Math.floor(seconds/100);
-        milliseconds = milliseconds < 10 ? "0" + milliseconds : milliseconds;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    DisplaySeconds = Math.floor(seconds/100) < 10 ? "0" + Math.floor(seconds/100) : Math.floor(seconds/100);
+    milliseconds = milliseconds < 10 ? "0" + milliseconds : milliseconds;
 
-        display.textContent = minutes + ":" + DisplaySeconds + ":" + milliseconds;
+    display.textContent = minutes + ":" + DisplaySeconds + ":" + milliseconds;
 
-        if (--timer < 0) {
-            triggered();
-            clearTimer(GlobalTimer);
-        }
-    }, 10);
-    GlobalTimer = stopTimer;
+    if (--timer < 0) {
+      triggered();
+      clearTimer(GlobalTimer);
+    }
+  }, 10);
+  GlobalTimer = stopTimer;
 }
 
 function clearTimer(){
@@ -68,11 +68,11 @@ function resetB (){
   startTimer(30*100, display);
   document.getElementById('audioplayer').src = "sounds/Siren.wav";
   document.getElementById('audioplayer').loop = true;
+  var wires = document.getElementsByClassName('wires');
   document.getElementsByTagName('body')[0].className = "unexploded";
   var fuseCombination = randomT();
   numOfSafeWires = fuseCombination.reduce(liveWires);
   numOfWiresCut = 0;
-  var wires = document.getElementsByClassName('wires');
   for (i = 0; i < wires.length; i ++){
     wires[i].src = "img/uncut-"+ wires[i].id+"-wire.png";
     wires[i].value = fuseCombination[i];
@@ -92,9 +92,9 @@ function randomT (){
 function triggered () {
   clearInterval(GlobalTimer);
   document.getElementsByTagName('body')[0].className = "triggered";
+  var wires = document.getElementsByClassName('wires');
   document.getElementById('audioplayer').src = "sounds/BldgExplode.wav";
   document.getElementById('audioplayer').loop = false;
-  var wires = document.getElementsByClassName('wires');
   for (i = 0; i< wires.length; i++){
     wires[i].removeEventListener('click', cut);
   }
